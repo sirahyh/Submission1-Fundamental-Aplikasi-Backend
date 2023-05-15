@@ -1,21 +1,37 @@
+// mengimpor dotenv dan menjalankan konfigurasinya
+require('dotenv').config();
+
 const Hapi = require('@hapi/hapi');
-const routes = require('./album/routes');
+const routeAlbum = require('./album/routes');
+const routeSong = require('./song/routes');
+const album = require('./album');
+const song = require('./song');
+const Services = require('./services')
+const Validator = require('./validator');
 
 const init = async () => {
+  const albumsService = new AlbumService();
+  const songsService = new SongService();
   const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
+    port: process.env.PORT,
+    host: process.env.HOST,
+    routes: {
+      cors: {
+        origin: ['*'],
+      },
+    },
   });
-
-  server.route(routes);
-
+ 
+  await server.register({
+    plugin: notes,
+    options: {
+      service: notesService,
+      validator: NotesValidator,
+    },
+  });
+ 
   await server.start();
-  console.log('Server running on %s', server.info.uri);
+  console.log(`Server berjalan pada ${server.info.uri}`);
 };
-
-process.on('unhandledRejection', (err) => {
-  console.log(err);
-  process.exit(1);
-});
-
+ 
 init();

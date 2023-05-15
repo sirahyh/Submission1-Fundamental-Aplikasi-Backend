@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "pg": "^8.10.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "submission1",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirahyh/Submission1-Fundamental-Aplikasi-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirahyh/Submission1-Fundamental-Aplikasi-Backend/issues"
+  },
+  "homepage": "https://github.com/sirahyh/Submission1-Fundamental-Aplikasi-Backend#readme",
+  "description": ""
+}
